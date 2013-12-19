@@ -229,5 +229,10 @@ namespace DiaryManager
         {
             throw new NotImplementedException();
         }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
