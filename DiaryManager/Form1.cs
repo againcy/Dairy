@@ -17,7 +17,17 @@ namespace DiaryManager
         public Form1()
         {
             InitializeComponent();
+            sv.CookieContainer = new System.Net.CookieContainer();
+            sv.logoutCompleted += sv_logoutCompleted;
+            sv.getNewestDiaryCompleted += sv_getNewestDiaryCompleted;
+            setLoggedOut();
             
+        }
+
+        void sv_getNewestDiaryCompleted(object sender, getNewestDiaryCompletedEventArgs e)
+        {
+            workspace.Text = e.Result.content;
+            //throw new NotImplementedException();
         }
 
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
@@ -52,6 +62,8 @@ namespace DiaryManager
 
         }
 
+        public bool isLoggedIn = false;
+        public Service1 sv = new Service1();
         //窗体加载时的初始化
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -154,6 +166,68 @@ namespace DiaryManager
         private void toolStripTextBox1_Click_1(object sender, EventArgs e)
         {
 
+        }
+        public string username;
+
+        private void setLoggedIn()
+        {
+            this.未登录ToolStripMenuItem.Text = "已登录：" + username;
+            this.登录ToolStripMenuItem.Text = "注销(&T)";
+            this.登录ToolStripMenuItem.Visible = true;
+
+            foreach (ToolStripItem t in this.未登录ToolStripMenuItem.DropDownItems)
+                t.Visible = true;
+        }
+
+        private void setLoggedOut()
+        {
+            this.isLoggedIn = false;
+            this.登录ToolStripMenuItem.Visible = false;
+            this.未登录ToolStripMenuItem.Text = "（未登录）";
+
+            foreach (ToolStripItem t in this.未登录ToolStripMenuItem.DropDownItems)
+                t.Visible = false;
+        }
+
+        private void 未登录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!this.isLoggedIn)
+            {
+                this.登录ToolStripMenuItem.Visible = false;
+                frmLogin fl = new frmLogin() { Owner = this };
+                fl.ShowDialog();
+                if (this.isLoggedIn)
+                {
+                    setLoggedIn();
+                }
+            }
+            
+        }
+
+        private void 登录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.isLoggedIn)
+            {
+                sv.logoutAsync();
+                
+            }
+        }
+
+        void sv_logoutCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            MessageBox.Show("已注销。");
+            setLoggedOut();
+        }
+
+        private void 获取最新日记ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sv.getNewestDiaryAsync();
+            
+        }
+
+        private void 上传当前日记ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
