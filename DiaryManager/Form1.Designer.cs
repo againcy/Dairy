@@ -28,34 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_bold = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Italic = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_underline = new System.Windows.Forms.ToolStripButton();
+            this.toolStripComboBox_size = new System.Windows.Forms.ToolStripComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建日记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.格式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1.SuspendLayout();
+            this.workspace = new System.Windows.Forms.RichTextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.toolStripComboBox_style = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStrip1
+            // toolStrip
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox1,
-            this.toolStripButton1,
-            this.toolStripButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 25);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(993, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton_bold,
+            this.toolStripButton_Italic,
+            this.toolStripButton_underline,
+            this.toolStripComboBox_style,
+            this.toolStripComboBox_size});
+            this.toolStrip.Location = new System.Drawing.Point(0, 25);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(1066, 25);
+            this.toolStrip.TabIndex = 0;
+            this.toolStrip.Text = "toolStrip1";
+            this.toolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip_ItemClicked);
+            // 
+            // toolStripButton_bold
+            // 
+            this.toolStripButton_bold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_bold.Image = global::DiaryManager.Properties.Resources.buttonBold;
+            this.toolStripButton_bold.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_bold.Name = "toolStripButton_bold";
+            this.toolStripButton_bold.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_bold.Text = "toolStripButton_bold";
+            this.toolStripButton_bold.Click += new System.EventHandler(this.toolStripButton_bold_Click);
+            // 
+            // toolStripButton_Italic
+            // 
+            this.toolStripButton_Italic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Italic.Image = global::DiaryManager.Properties.Resources.buttonItalic;
+            this.toolStripButton_Italic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Italic.Name = "toolStripButton_Italic";
+            this.toolStripButton_Italic.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Italic.Text = "toolStripButton_Italic";
+            this.toolStripButton_Italic.Click += new System.EventHandler(this.toolStripButton_Italic_Click);
+            // 
+            // toolStripButton_underline
+            // 
+            this.toolStripButton_underline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_underline.Image = global::DiaryManager.Properties.Resources.buttonUnderline;
+            this.toolStripButton_underline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_underline.Name = "toolStripButton_underline";
+            this.toolStripButton_underline.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_underline.Text = "toolStripButton_underline";
+            this.toolStripButton_underline.Click += new System.EventHandler(this.toolStripButton_underline_Click);
+            // 
+            // toolStripComboBox_size
+            // 
+            this.toolStripComboBox_size.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_size.Items.AddRange(new object[] {
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "22",
+            "24",
+            "26",
+            "28",
+            "36",
+            "48",
+            "72"});
+            this.toolStripComboBox_size.Name = "toolStripComboBox_size";
+            this.toolStripComboBox_size.Size = new System.Drawing.Size(75, 25);
+            this.toolStripComboBox_size.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox_size_SelectedIndexChanged);
+            this.toolStripComboBox_size.Click += new System.EventHandler(this.toolStripComboBox_size_Click);
             // 
             // menuStrip1
             // 
@@ -65,7 +124,7 @@
             this.格式ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(993, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1066, 25);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -81,13 +140,13 @@
             // 新建日记ToolStripMenuItem
             // 
             this.新建日记ToolStripMenuItem.Name = "新建日记ToolStripMenuItem";
-            this.新建日记ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.新建日记ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.新建日记ToolStripMenuItem.Text = "新建日记";
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.保存ToolStripMenuItem.Text = "保存日记";
             // 
             // 编辑ToolStripMenuItem
@@ -102,62 +161,47 @@
             this.格式ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.格式ToolStripMenuItem.Text = "格式";
             // 
-            // richTextBox1
+            // workspace
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(151, 87);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(672, 557);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.workspace.Location = new System.Drawing.Point(151, 87);
+            this.workspace.Name = "workspace";
+            this.workspace.Size = new System.Drawing.Size(688, 557);
+            this.workspace.TabIndex = 2;
+            this.workspace.Text = "";
+            this.workspace.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // treeView1
+            // listBox1
             // 
-            this.treeView1.Location = new System.Drawing.Point(0, 87);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(145, 557);
-            this.treeView1.TabIndex = 4;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(0, 87);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(145, 460);
+            this.listBox1.TabIndex = 3;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // toolStripComboBox1
+            // toolStripComboBox_style
             // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripComboBox_style.Name = "toolStripComboBox_style";
+            this.toolStripComboBox_style.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBox_style.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox_style_SelectedIndexChanged);
+            this.toolStripComboBox_style.Click += new System.EventHandler(this.toolStripComboBox_style_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 645);
-            this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.toolStrip1);
+            this.ClientSize = new System.Drawing.Size(1066, 645);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.workspace);
+            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -167,18 +211,20 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 格式ToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.RichTextBox workspace;
         private System.Windows.Forms.ToolStripMenuItem 新建日记ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_size;
+        private System.Windows.Forms.ToolStripButton toolStripButton_bold;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Italic;
+        private System.Windows.Forms.ToolStripButton toolStripButton_underline;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_style;
     }
 }
 
