@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace DiaryManager
 {
@@ -20,14 +21,20 @@ namespace DiaryManager
             itemType = type;
         }
     }
-    public class BillManagemeny : ManagementItem
+    public class BillManagement : ManagementItem
     {
         public int amount;
         public string reason;
-        public Boolean type;
+        public int type;
         public void setAmount(int am)
         {
             amount = am;
+        }
+        public BillManagement(int am,int type,string rea) 
+        {
+            setAmount(am);
+            setType(type);
+            reason = rea;
         }
     }
     public class DietManagement : ManagementItem
@@ -39,6 +46,12 @@ namespace DiaryManager
         {
             amount = am;
         }
+        public DietManagement(string am,string fo,DateTime ti)
+        {
+            setAmount(am);
+            food = fo;
+            time = ti;
+        }
     }
     public class ExerciseManagement : ManagementItem
     {
@@ -49,35 +62,30 @@ namespace DiaryManager
         {
             amount = am;
         }
+        public ExerciseManagement(string am,string ex,DateTime ti)
+        {
+            setAmount(am);
+            exercise = ex;
+            time = ti;
+        }
     }
     public class Management
     {
-        public ManagementItem[] items;
-        public int index;
-        public void initialize()
+        public ArrayList items;
+        public Management()
         {
-            items = new ManagementItem[20];
-            index = 0;
+            items = new ArrayList();
         }
         public void addItem(ManagementItem item)
         {
-            items[index] = item;
-            index++;
+            items.Add(item);
         }
         public void analyse()
         {
         }
         public void deleteItem(ManagementItem item)
         {
-            for (int i = 0; i < index; i++)
-            {
-                if (items[i] == item)
-                {
-                    items[i] = items[index];
-                    index--;
-                }
-
-            }
+            items.Remove(item);
         }
 
     }
@@ -87,12 +95,19 @@ namespace DiaryManager
         public DateTime date;
         public string title;
         public Management management;
-        public void edit(int startindex, int count, string str)
+        public Diary()
         {
-            content.Remove(startindex, count);
-            content.Insert(startindex, str);
-        }
 
+            
+        }
+        public void edit(string str)
+        {
+            content = str;
+        }
+        public string read()
+        {
+            return content;
+        }
     }
     class Diaryclass
     {
