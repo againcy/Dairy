@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_bold = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Italic = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_underline = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBox_style = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripComboBox_size = new System.Windows.Forms.ToolStripComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -47,10 +50,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.toolStripButton_bold = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_Italic = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_underline = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.toolStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,36 @@
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             this.toolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip_ItemClicked);
+            // 
+            // toolStripButton_bold
+            // 
+            this.toolStripButton_bold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_bold.Image = global::DiaryManager.Properties.Resources.buttonBold;
+            this.toolStripButton_bold.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_bold.Name = "toolStripButton_bold";
+            this.toolStripButton_bold.Size = new System.Drawing.Size(23, 37);
+            this.toolStripButton_bold.Text = "toolStripButton_bold";
+            this.toolStripButton_bold.Click += new System.EventHandler(this.toolStripButton_bold_Click);
+            // 
+            // toolStripButton_Italic
+            // 
+            this.toolStripButton_Italic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Italic.Image = global::DiaryManager.Properties.Resources.buttonItalic;
+            this.toolStripButton_Italic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Italic.Name = "toolStripButton_Italic";
+            this.toolStripButton_Italic.Size = new System.Drawing.Size(23, 37);
+            this.toolStripButton_Italic.Text = "toolStripButton_Italic";
+            this.toolStripButton_Italic.Click += new System.EventHandler(this.toolStripButton_Italic_Click);
+            // 
+            // toolStripButton_underline
+            // 
+            this.toolStripButton_underline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_underline.Image = global::DiaryManager.Properties.Resources.buttonUnderline;
+            this.toolStripButton_underline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_underline.Name = "toolStripButton_underline";
+            this.toolStripButton_underline.Size = new System.Drawing.Size(23, 37);
+            this.toolStripButton_underline.Text = "toolStripButton_underline";
+            this.toolStripButton_underline.Click += new System.EventHandler(this.toolStripButton_underline_Click);
             // 
             // toolStripComboBox_style
             // 
@@ -203,7 +234,7 @@
             // workspace
             // 
             this.workspace.Location = new System.Drawing.Point(302, 242);
-            this.workspace.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.workspace.Margin = new System.Windows.Forms.Padding(6);
             this.workspace.Name = "workspace";
             this.workspace.Size = new System.Drawing.Size(1372, 1110);
             this.workspace.TabIndex = 2;
@@ -215,7 +246,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 24;
             this.listBox1.Location = new System.Drawing.Point(0, 242);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(6);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(286, 916);
             this.listBox1.TabIndex = 3;
@@ -229,36 +260,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // toolStripButton_bold
-            // 
-            this.toolStripButton_bold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_bold.Image = global::DiaryManager.Properties.Resources.buttonBold;
-            this.toolStripButton_bold.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_bold.Name = "toolStripButton_bold";
-            this.toolStripButton_bold.Size = new System.Drawing.Size(23, 37);
-            this.toolStripButton_bold.Text = "toolStripButton_bold";
-            this.toolStripButton_bold.Click += new System.EventHandler(this.toolStripButton_bold_Click);
-            // 
-            // toolStripButton_Italic
-            // 
-            this.toolStripButton_Italic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_Italic.Image = global::DiaryManager.Properties.Resources.buttonItalic;
-            this.toolStripButton_Italic.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_Italic.Name = "toolStripButton_Italic";
-            this.toolStripButton_Italic.Size = new System.Drawing.Size(23, 37);
-            this.toolStripButton_Italic.Text = "toolStripButton_Italic";
-            this.toolStripButton_Italic.Click += new System.EventHandler(this.toolStripButton_Italic_Click);
-            // 
-            // toolStripButton_underline
-            // 
-            this.toolStripButton_underline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_underline.Image = global::DiaryManager.Properties.Resources.buttonUnderline;
-            this.toolStripButton_underline.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_underline.Name = "toolStripButton_underline";
-            this.toolStripButton_underline.Size = new System.Drawing.Size(23, 37);
-            this.toolStripButton_underline.Text = "toolStripButton_underline";
-            this.toolStripButton_underline.Click += new System.EventHandler(this.toolStripButton_underline_Click);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(1802, 147);
@@ -269,18 +270,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 24;
+            this.listBox2.Location = new System.Drawing.Point(1733, 242);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(397, 916);
+            this.listBox2.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2200, 1368);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.workspace);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -318,6 +329,7 @@
         private System.Windows.Forms.ToolStripMenuItem 读取日记ToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }
 
