@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 
 namespace DiaryManager
@@ -233,6 +235,68 @@ namespace DiaryManager
         private void label14_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //保存日记到本地
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "rtf files (*.rtf)|*.rtf|txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    // Code to write the stream goes here.
+                    workspace.SaveFile(myStream,RichTextBoxStreamType.RichText);
+                    myStream.Close();
+                }
+            }
+        }
+
+        //保存框
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+        }
+
+        //新建日记，日期默认为当天的日期
+        private void 新建日记ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 读取日记ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "rtf files (*.rtf)|*.rtf|txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            workspace.LoadFile(myStream, RichTextBoxStreamType.RichText);
+                            // Insert code to read the stream here.
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
         }
     }
 }
