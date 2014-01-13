@@ -49,7 +49,7 @@ namespace DiaryManager
                 this.btnOk.Enabled = false;
             }
             }
-            catch(Exception exp)
+            catch(Exception )
             {
                 fm.isLoggedIn = false;
                 lblWait.Text = "登录失败，请重试";
