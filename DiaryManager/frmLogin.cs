@@ -40,6 +40,7 @@ namespace DiaryManager
         void sv_authenticateCompleted(object sender, authenticateCompletedEventArgs e)
         {
             Form1 fm = this.Owner as Form1;
+            try{
             if (e.Result != null)
             {
                 fm.isLoggedIn = true;
@@ -47,7 +48,8 @@ namespace DiaryManager
                 lblWait.Text = "登录成功";
                 this.btnOk.Enabled = false;
             }
-            else
+            }
+            catch(Exception exp)
             {
                 fm.isLoggedIn = false;
                 lblWait.Text = "登录失败，请重试";
