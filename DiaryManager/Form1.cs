@@ -26,6 +26,8 @@ namespace DiaryManager
             
         }
 
+        Font defaultFont = new Font("宋体", 20, (FontStyle)0);
+
         void sv_getNewestDiaryCompleted(object sender, getNewestDiaryCompletedEventArgs e)
         {
             workspace.Text = e.Result.content;
@@ -92,12 +94,12 @@ namespace DiaryManager
         private void toolStripButton_bold_Click(object sender, EventArgs e)
         {
             Font oldFont, newFont;
-            oldFont = this.workspace.SelectionFont;
-            if (oldFont.Bold)
-                newFont = new Font(oldFont, oldFont.Style & ~FontStyle.Bold);
-            else
-                newFont = new Font(oldFont, oldFont.Style | FontStyle.Bold);
+            oldFont = myGetSelectionFont();
+            newFont = this.getFont(oldFont.FontFamily.Name,oldFont.Size,
+                oldFont.Bold?oldFont.Style&~FontStyle.Bold : oldFont.Style|FontStyle.Bold);
+            
             this.workspace.SelectionFont = newFont;
+            this.setFontIcons(newFont);
             this.workspace.Focus();
         }
 
@@ -105,12 +107,12 @@ namespace DiaryManager
         private void toolStripButton_Italic_Click(object sender, EventArgs e)
         {
             Font oldFont, newFont;
-            oldFont = this.workspace.SelectionFont;
-            if (oldFont.Italic)
-                newFont = new Font(oldFont, oldFont.Style & ~FontStyle.Italic);
-            else
-                newFont = new Font(oldFont, oldFont.Style | FontStyle.Italic);
+            oldFont = myGetSelectionFont();
+            newFont = this.getFont(oldFont.FontFamily.Name, oldFont.Size,
+                oldFont.Italic ? oldFont.Style & ~FontStyle.Italic : oldFont.Style | FontStyle.Italic);
+
             this.workspace.SelectionFont = newFont;
+            this.setFontIcons(newFont);
             this.workspace.Focus();
         }
 
@@ -118,13 +120,14 @@ namespace DiaryManager
         private void toolStripButton_underline_Click(object sender, EventArgs e)
         {
             Font oldFont, newFont;
-            oldFont = this.workspace.SelectionFont;
-            if (oldFont.Underline)
-                newFont = new Font(oldFont, oldFont.Style & ~FontStyle.Underline);
-            else
-                newFont = new Font(oldFont, oldFont.Style | FontStyle.Underline);
+            oldFont = myGetSelectionFont();
+            newFont = this.getFont(oldFont.FontFamily.Name, oldFont.Size,
+                oldFont.Underline ? oldFont.Style & ~FontStyle.Underline : oldFont.Style | FontStyle.Underline);
+
             this.workspace.SelectionFont = newFont;
+            this.setFontIcons(newFont);
             this.workspace.Focus();
+
         }
 
         //更改字号
@@ -132,8 +135,10 @@ namespace DiaryManager
         {
             string sizeString = ((ToolStripComboBox)sender).SelectedItem.ToString();
             float curSize = float.Parse(sizeString);
-            Font oldFont = this.workspace.SelectionFont;
-            this.workspace.SelectionFont = new Font(oldFont.FontFamily, curSize, oldFont.Style);
+            Font oldFont = myGetSelectionFont();
+            Font newFont = this.getFont(oldFont.FontFamily.Name, curSize, oldFont.Style);
+            this.setFontIcons(newFont);
+            this.workspace.SelectionFont = newFont;
             this.workspace.Focus();
         }
 
@@ -141,16 +146,11 @@ namespace DiaryManager
         private void toolStripComboBox_style_SelectedIndexChanged(object sender, EventArgs e)
         {
             string styleString = ((ToolStripComboBox)sender).SelectedItem.ToString();
-
-            Font oldFont = this.workspace.SelectionFont;
-            //try
-            //{
-                this.workspace.SelectionFont = new Font(styleString, oldFont.Size, oldFont.Style);
-            //}
-           // catch (Exception )
-            //{
-            //    MessageBox.Show("请使用另一种字体");
-           // }
+            
+            Font oldFont = myGetSelectionFont();
+            Font newFont = this.getFont(styleString, oldFont.Size, oldFont.Style);
+            this.workspace.SelectionFont = newFont;
+            this.setFontIcons(newFont);
             this.workspace.Focus();
         }
 
@@ -303,6 +303,12 @@ namespace DiaryManager
         {
             Form2 newForm = new Form2();
             newForm.Show();
+        }
+
+        private void workspace_FontChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("font changed");
+            //this.setFontIcons
         }
     }
 }
