@@ -266,7 +266,10 @@ namespace DiaryManager
         //新建日记，日期默认为当天的日期
         private void 新建日记ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Diary newDiary = new Diary();
+            creatNew tmp = new creatNew(title, weather, date);
+            
+            tmp.Show();
         }
 
         private void 读取日记ToolStripMenuItem_Click(object sender, EventArgs e)
