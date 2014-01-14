@@ -313,5 +313,30 @@ namespace DiaryManager
             MessageBox.Show("font changed");
             //this.setFontIcons
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.workspace.Select(1, 2);
+        }
+
+        private void 剪切CToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 编辑ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 保存ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 格式ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
