@@ -20,7 +20,7 @@ namespace DiaryManager
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            lblUserName.Text = "用户名";
+            lblUserName.Text = "用户名: ";
             btnOk.Text = "登录";
             lblWait.Visible = false;
             Form1 fm = this.Owner as Form1;
