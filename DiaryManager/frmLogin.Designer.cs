@@ -104,7 +104,7 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.ShowInTaskbar = false;
-            this.Text = "frmLogin";
+            this.Text = "登录窗口";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

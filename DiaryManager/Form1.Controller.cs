@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace DiaryManager
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         private bool setFontIcons(bool isBold, bool isItalic, bool isUnderline, int fontNameIndex, int fontSizeIndex)
         {

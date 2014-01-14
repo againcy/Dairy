@@ -1,6 +1,6 @@
 ﻿namespace DiaryManager
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_bold = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Italic = new System.Windows.Forms.ToolStripButton();
@@ -51,6 +51,7 @@
             this.粘贴VToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于日记管理器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.未登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -60,14 +61,13 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addNewMan = new System.Windows.Forms.Button();
             this.date = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.weather = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.loadButton = new System.Windows.Forms.Button();
             this.buttonCheckManage = new System.Windows.Forms.Button();
-            this.关于日记管理器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -276,6 +276,12 @@
             this.帮助ToolStripMenuItem.Text = "帮助(&H)";
             this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.格式ToolStripMenuItem_Click);
             // 
+            // 关于日记管理器ToolStripMenuItem
+            // 
+            this.关于日记管理器ToolStripMenuItem.Name = "关于日记管理器ToolStripMenuItem";
+            this.关于日记管理器ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.关于日记管理器ToolStripMenuItem.Text = "关于 日记管理器(&A)";
+            // 
             // 未登录ToolStripMenuItem
             // 
             this.未登录ToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -344,16 +350,16 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button1
+            // addNewMan
             // 
-            this.button1.Location = new System.Drawing.Point(901, 88);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 30);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "添加新的管理项";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.addNewMan.Location = new System.Drawing.Point(901, 88);
+            this.addNewMan.Margin = new System.Windows.Forms.Padding(2);
+            this.addNewMan.Name = "addNewMan";
+            this.addNewMan.Size = new System.Drawing.Size(144, 30);
+            this.addNewMan.TabIndex = 4;
+            this.addNewMan.Text = "添加新的管理项";
+            this.addNewMan.UseVisualStyleBackColor = true;
+            this.addNewMan.Click += new System.EventHandler(this.addNewMan_Click);
             // 
             // date
             // 
@@ -412,14 +418,9 @@
             this.buttonCheckManage.TabIndex = 8;
             this.buttonCheckManage.Text = "查看管理项";
             this.buttonCheckManage.UseVisualStyleBackColor = true;
+            this.buttonCheckManage.Click += new System.EventHandler(this.buttonCheckManage_Click);
             // 
-            // 关于日记管理器ToolStripMenuItem
-            // 
-            this.关于日记管理器ToolStripMenuItem.Name = "关于日记管理器ToolStripMenuItem";
-            this.关于日记管理器ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.关于日记管理器ToolStripMenuItem.Text = "关于 日记管理器(&A)";
-            // 
-            // Form1
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -430,7 +431,7 @@
             this.Controls.Add(this.weather);
             this.Controls.Add(this.title);
             this.Controls.Add(this.date);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addNewMan);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.workspace);
             this.Controls.Add(this.toolStrip);
@@ -438,8 +439,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "frmMain";
+            this.Text = "日记管理器";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
@@ -474,7 +475,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem 读取日记ToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addNewMan;
         private System.Windows.Forms.Label date;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label weather;
