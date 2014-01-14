@@ -13,16 +13,17 @@ using System.Windows.Forms;
 
 namespace DiaryManager
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         //构造函数在这里！
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
             sv.CookieContainer = new System.Net.CookieContainer();
             sv.logoutCompleted += sv_logoutCompleted;
             sv.getNewestDiaryCompleted += sv_getNewestDiaryCompleted;
             setLoggedOut();
+            curDiary = new Diary();
             
         }
 
@@ -302,9 +303,9 @@ namespace DiaryManager
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addNewMan_Click(object sender, EventArgs e)
         {
-            Form2 newForm = new Form2();
+            frmManagement newForm = new frmManagement(curDiary);
             newForm.Show();
         }
 
@@ -337,6 +338,12 @@ namespace DiaryManager
         private void 格式ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonCheckManage_Click(object sender, EventArgs e)
+        {
+            frmCheckMan frm = new frmCheckMan(curDiary);
+            frm.Show();
         }
     }
 }

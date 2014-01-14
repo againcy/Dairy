@@ -10,16 +10,21 @@ using System.Windows.Forms;
 
 namespace DiaryManager
 {
-    public partial class Form2 : Form
+    public partial class frmItemExist : Form
     {
-        public Form2()
+        public frmItemExist()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void confirmButton_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void cancleButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

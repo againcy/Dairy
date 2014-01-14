@@ -23,23 +23,23 @@ namespace DiaryManager
             lblUserName.Text = "用户名: ";
             btnOk.Text = "登录";
             lblWait.Visible = false;
-            Form1 fm = this.Owner as Form1;
+            frmMain fm = this.Owner as frmMain;
             fm.sv.authenticateCompleted += sv_authenticateCompleted;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            Form1 fm = this.Owner as Form1;
+            frmMain fm = this.Owner as frmMain;
             fm.sv.authenticateAsync(txtUserName.Text, txtPassword.Text);
             fm.username = txtUserName.Text;
             lblWait.Visible = true;
             lblWait.Text = "正在登录，请稍候。。。";
             fm.sv.authenticateCompleted += sv_authenticateCompleted;
         }
-
+        
         void sv_authenticateCompleted(object sender, authenticateCompletedEventArgs e)
         {
-            Form1 fm = this.Owner as Form1;
+            frmMain fm = this.Owner as frmMain;
             try{
             if (e.Result != null)
             {
@@ -56,5 +56,6 @@ namespace DiaryManager
                 
             }
         }
+        
     }
 }
