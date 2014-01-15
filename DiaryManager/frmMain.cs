@@ -8,7 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Xml;
+using System.Xml.Serialization;
 
 
 namespace DiaryManager
@@ -26,7 +27,7 @@ namespace DiaryManager
             curDiary = new Diary();
             
         }
-
+        private Diary curDiary;
         Font defaultFont = new Font("宋体", 20, (FontStyle)0);
 
         void sv_getNewestDiaryCompleted(object sender, getNewestDiaryCompletedEventArgs e)
@@ -79,6 +80,7 @@ namespace DiaryManager
             this.toolStripComboBox_style.SelectedItem = "宋体";              //默认显示的字体  
 
             this.toolStripComboBox_size.SelectedIndex = 10;               //默认的字号为10  
+            this.workspace.Modified = false;
         }
 
         private void toolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -238,25 +240,11 @@ namespace DiaryManager
 
         }
 
+        private bool isSaved = false;
         //保存日记到本地
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            saveFileDialog1.Filter = "rtf files (*.rtf)|*.rtf|txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
-                {
-                    // Code to write the stream goes here.
-                    workspace.SaveFile(myStream,RichTextBoxStreamType.RichText);
-                    myStream.Close();
-                }
-            }
+            savefile();
         }
 
         //保存框
@@ -272,7 +260,57 @@ namespace DiaryManager
             
             tmp.Show();
         }
+        private void XmlWriter<T>(T t, Stream tw)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(T));
+            xs.Serialize(tw, t);
+            
+        }
+        static Management loadmandata(string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Open);
+            XmlReader xr = XmlReader.Create(fs);
+            XmlSerializer xs = new XmlSerializer(typeof(Management));
+            //Console.WriteLine(((user)xs.Deserialize(xr)).username);
+            //Console.WriteLine(((user)xs.Deserialize(fs)).username);
+            return (Management)xs.Deserialize(xr);
+        }
 
+        static T loadXmlFromFile<T>(Stream fs)
+        {
+            //FileStream fs = new FileStream(path, FileMode.Open);
+            XmlReader xr = XmlReader.Create(fs);
+            XmlSerializer xs = new XmlSerializer(typeof(T));
+            //Console.WriteLine(((user)xs.Deserialize(xr)).username);
+            //Console.WriteLine(((user)xs.Deserialize(fs)).username);
+            return (T)xs.Deserialize(xr);
+        }
+
+        private bool savefile()
+        {
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "rtf files (*.rtf)|*.rtf|txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    curDiary.content = workspace.Rtf;
+                    XmlWriter<Diary>(this.curDiary, myStream);
+                    
+                    // Code to write the stream goes here.
+                    //workspace.SaveFile(myStream, RichTextBoxStreamType.RichText);
+                    myStream.Close();
+                    workspace.Modified = true;
+                    return true;
+                }
+            }
+            return false;
+        }
         private void 读取日记ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Stream myStream = null;
@@ -291,7 +329,9 @@ namespace DiaryManager
                     {
                         using (myStream)
                         {
-                            workspace.LoadFile(myStream, RichTextBoxStreamType.RichText);
+                            curDiary = loadXmlFromFile<Diary>(myStream);
+                            workspace.Rtf = curDiary.content;
+                            //workspace.LoadFile(myStream, RichTextBoxStreamType.RichText);
                             // Insert code to read the stream here.
                         }
                     }
@@ -344,6 +384,47 @@ namespace DiaryManager
         {
             frmCheckMan frm = new frmCheckMan(curDiary);
             frm.Show();
+        }
+
+        private void 退出XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private DialogResult notifySaving()
+        {
+            return MessageBox.Show("是否保存当前修改？", this.Text, MessageBoxButtons.YesNoCancel);
+            
+        }
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (workspace.Modified)
+            {
+                DialogResult r = notifySaving();
+                if (r == DialogResult.Yes)
+                {
+                    if (savefile())
+                    {
+                        //exit
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
+                }
+                else if (r == DialogResult.No)
+                {
+                    //exit
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                //exit
+            }
         }
     }
 }
