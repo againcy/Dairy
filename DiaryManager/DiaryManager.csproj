@@ -64,11 +64,6 @@
     <Compile Include="frmItemExist.Designer.cs">
       <DependentUpon>frmItemExist.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewDiary.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNewDiary.designer.cs">
-      <DependentUpon>frmNewDiary.cs</DependentUpon>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,8 +108,6 @@
     <EmbeddedResource Include="frmItemExist.resx">
       <DependentUpon>frmItemExist.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewDiary.resx">
-      <DependentUpon>frmNewDiary.cs</DependentUpon>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

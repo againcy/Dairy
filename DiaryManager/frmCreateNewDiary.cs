@@ -38,6 +38,7 @@ namespace DiaryManager
             this.lb_weather.Text = weatherBox.Text;
             this.lb_title.Text = titleBox.Text;
             this.lb_date.Text = dateTimePicker1.Text;
+            
             this.Close();
         }
     }
