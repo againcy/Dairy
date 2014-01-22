@@ -8,7 +8,19 @@ namespace DiaryManager
 {
     public class ManagementItem
     {
-        public int itemType;
+        private int _itemType;
+        public int itemType
+        {
+            set
+            {
+                this._itemType = value;
+                
+            }
+            get
+            {
+                return this._itemType;
+            }
+        }
         /*
          * 0 饮食计划
          * 1 锻炼计划
@@ -121,7 +133,7 @@ namespace DiaryManager
     }
     public class Diary
     {
-        public string content;
+        public string content;//set as pointer to workspace.rtf?
         public DateTime date;
         public string title;
         public string weather;
