@@ -362,7 +362,7 @@ namespace DiaryManager
 
         private void 剪切CToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.workspace.Cut();
         }
 
         private void 编辑ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -425,6 +425,73 @@ namespace DiaryManager
             {
                 //exit
             }
+        }
+
+        private void 撤销ZToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.workspace.Undo();
+        }
+
+        private void 重做ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.workspace.Redo();
+        }
+
+        private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.workspace.Copy();
+        }
+
+        private void 粘贴VToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.workspace.Paste();
+        }
+
+        private void 删除DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void toolStripButton_sizedown_Click(object sender, EventArgs e)
+        {
+            /*
+            Font oldFont = myGetSelectionFont();
+            float curSize = oldFont.Size;
+
+            Font newFont = this.getFont(oldFont.FontFamily.Name, curSize-1, oldFont.Style);
+            this.setFontIcons(newFont);
+            this.workspace.SelectionFont = newFont;
+            this.workspace.Focus();
+             * */
+        }
+
+        private void toolStripButton_color_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            if (colorDlg.ShowDialog()== DialogResult.OK)
+            {
+                this.workspace.SelectionColor = colorDlg.Color;
+            }
+            
+        }
+
+        private void toolStripButton_alignLeft_Click(object sender, EventArgs e)
+        {
+            this.workspace.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        private void toolStripButton_alignMiddle_Click(object sender, EventArgs e)
+        {
+            this.workspace.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
+        private void toolStripButton_alignRight_Click(object sender, EventArgs e)
+        {
+            this.workspace.SelectionAlignment = HorizontalAlignment.Right;
+        }
+
+        private void toolStripButton_alignJustify_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

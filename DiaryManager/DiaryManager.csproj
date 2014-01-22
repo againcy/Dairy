@@ -142,8 +142,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resource\AlignCenter.png" />
+    <Content Include="resource\AlignJustify.png" />
+    <Content Include="resource\AlignLeft.png" />
+    <Content Include="resource\AlignRight.png" />
     <Content Include="resource\Bold.png" />
+    <None Include="resource\FontSizeDecrease.png" />
+    <None Include="resource\FontSizeIncrease.png" />
     <Content Include="resource\Italic.png" />
+    <Content Include="resource\TextFillColorPicker.png" />
     <Content Include="resource\Underline.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
