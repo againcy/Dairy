@@ -10,16 +10,19 @@ using System.Windows.Forms;
 
 namespace DiaryManager
 {
-    public partial class creatNew : Form
+    public partial class frmCreatNew : Form
     {
-        private Label lb_title;
-        private Label lb_weather;
-        private Label lb_date;
-        public creatNew(Label title,Label weather,Label date)
+       /* private string curTitle;
+        private string curWeather;
+        private DateTime curDate;*/
+        private Diary tmp;
+        public frmCreatNew(Diary newDiary)
         {
-            this.lb_date = date;
-            this.lb_title = title;
-            this.lb_weather = weather;
+            tmp = newDiary;
+            /*
+            this.curDate = newDiary.date;
+            this.curTitle = newDiary.title;
+            this.curWeather = newDiary.weather;*/
             InitializeComponent();
         }
 
@@ -35,11 +38,17 @@ namespace DiaryManager
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
-            this.lb_weather.Text = weatherBox.Text;
-            this.lb_title.Text = titleBox.Text;
-            this.lb_date.Text = dateTimePicker1.Text;
+            
+            this.tmp.weather = weatherBox.Text;
+            this.tmp.title = titleBox.Text;
+            this.tmp.date = dateTimePicker1.Value;
             
             this.Close();
+        }
+
+        private void creatNew_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

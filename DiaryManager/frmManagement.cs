@@ -42,8 +42,7 @@ namespace DiaryManager
             item.setType(0);//0 food
             item.initialEvents();
             frmManItem frm = new frmManItem(item);
-            frm.ShowDialog();
-            curDiary.management.addItem(item);
+            if (frm.ShowDialog()==DialogResult.OK) curDiary.management.addItem(item);
         }
 
         private void addSport_Click(object sender, EventArgs e)
@@ -59,8 +58,8 @@ namespace DiaryManager
             item.setType(1);//1 sport
             item.initialEvents();
             frmManItem frm = new frmManItem(item);
-            frm.ShowDialog();
-            curDiary.management.addItem(item);
+            
+            if (frm.ShowDialog()==DialogResult.OK) curDiary.management.addItem(item);
             
         }
 
@@ -77,8 +76,7 @@ namespace DiaryManager
             item.setType(2);//2 bill
             item.initialEvents();
             frmManItem frm = new frmManItem(item);
-            frm.ShowDialog();
-            curDiary.management.addItem(item);
+            if (frm.ShowDialog()==DialogResult.OK)curDiary.management.addItem(item);
         }
 
     }

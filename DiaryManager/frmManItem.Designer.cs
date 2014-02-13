@@ -125,6 +125,7 @@
             // 
             // acceptButton
             // 
+            this.acceptButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.acceptButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.acceptButton.Location = new System.Drawing.Point(515, 267);
             this.acceptButton.Name = "acceptButton";
@@ -136,6 +137,7 @@
             // 
             // cancleButton
             // 
+            this.cancleButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancleButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cancleButton.Location = new System.Drawing.Point(515, 303);
             this.cancleButton.Name = "cancleButton";

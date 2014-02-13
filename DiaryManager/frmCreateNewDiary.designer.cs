@@ -1,6 +1,6 @@
 ﻿namespace DiaryManager
 {
-    partial class creatNew
+    partial class frmCreatNew
     {
         /// <summary>
         /// Required designer variable.
@@ -91,6 +91,7 @@
             // 
             // AcceptButton
             // 
+            this.AcceptButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.AcceptButton.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.AcceptButton.Location = new System.Drawing.Point(25, 255);
             this.AcceptButton.Name = "AcceptButton";
@@ -102,6 +103,7 @@
             // 
             // cancleButton
             // 
+            this.cancleButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancleButton.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cancleButton.Location = new System.Drawing.Point(138, 255);
             this.cancleButton.Name = "cancleButton";
@@ -122,7 +124,7 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(204, 30);
             this.dateTimePicker1.TabIndex = 5;
             // 
-            // creatNew
+            // frmCreatNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,8 +137,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.titleBox);
             this.Controls.Add(this.weatherBox);
-            this.Name = "creatNew";
+            this.Name = "frmCreatNew";
             this.Text = "新建";
+            this.Load += new System.EventHandler(this.creatNew_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -253,12 +253,22 @@ namespace DiaryManager
         }
 
         //新建日记，日期默认为当天的日期
+        string strTitle, strWeather;
+        DateTime newDate;
+
         private void 新建日记ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Diary newDiary = new Diary();
-            creatNew tmp = new creatNew(title, weather, date);
-            
-            tmp.Show();
+
+            frmCreatNew newfrm = new frmCreatNew(newDiary);
+            if (newfrm.ShowDialog() == DialogResult.OK)
+            {
+                curDiary = newDiary;
+                title.Text = curDiary.title;
+                weather.Text = curDiary.weather;
+                date.Text = curDiary.date.ToString("yyyy/MM/dd");
+                workspace.Rtf = "";
+            }
         }
         private void XmlWriter<T>(T t, Stream tw)
         {
@@ -372,6 +382,7 @@ namespace DiaryManager
 
         private void 保存ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            savefile();
 
         }
 
@@ -492,6 +503,32 @@ namespace DiaryManager
         private void toolStripButton_alignJustify_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openJPGDialog = new OpenFileDialog();
+            openJPGDialog.Filter = "JPG图片(*.jpg,*.jpeg)|*.jpg|BMP图片(*.bmp)|*.bmp|GIF图片(*.gif)|*.gif|PNG图片|*.png";
+            openJPGDialog.FilterIndex = 0;
+            openJPGDialog.RestoreDirectory = true;
+            openJPGDialog.Multiselect = false;
+            if (openJPGDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openJPGDialog.FileName;
+                Image img = Image.FromFile(filePath);
+                Clipboard.SetDataObject(img);
+                workspace.Paste(DataFormats.GetFormat(DataFormats.Bitmap));
+            }
+        }
+
+        private void date_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 关于日记管理器ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("日记管理器v1.0 \n作者：\n   刘逸彬\n   朱硕斐\n   孙浩\n   唐广智");
         }
     }
 }

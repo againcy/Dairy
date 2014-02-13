@@ -30,8 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_bold = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Italic = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_underline = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBox_style = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripComboBox_size = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButton_color = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton_alignLeft = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_alignMiddle = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_alignRight = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建日记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +52,7 @@
             this.退出XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.撤销ZToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.重做ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.剪切CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,30 +65,15 @@
             this.获取最新日记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.上传当前日记ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.workspace = new System.Windows.Forms.RichTextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.addNewMan = new System.Windows.Forms.Button();
             this.date = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.weather = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.loadButton = new System.Windows.Forms.Button();
             this.buttonCheckManage = new System.Windows.Forms.Button();
-            this.重做ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton_bold = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_Italic = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_underline = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_sizedown = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_sizeup = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_color = new System.Windows.Forms.ToolStripButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.toolStripButton_alignLeft = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_alignMiddle = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_alignRight = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.openJPGDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -90,8 +86,6 @@
             this.toolStripButton_underline,
             this.toolStripComboBox_style,
             this.toolStripComboBox_size,
-            this.toolStripButton_sizedown,
-            this.toolStripButton_sizeup,
             this.toolStripButton_color,
             this.toolStripSeparator1,
             this.toolStripButton_alignLeft,
@@ -105,6 +99,36 @@
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             this.toolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip_ItemClicked);
+            // 
+            // toolStripButton_bold
+            // 
+            this.toolStripButton_bold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_bold.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_bold.Image")));
+            this.toolStripButton_bold.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_bold.Name = "toolStripButton_bold";
+            this.toolStripButton_bold.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_bold.Text = "加粗";
+            this.toolStripButton_bold.Click += new System.EventHandler(this.toolStripButton_bold_Click);
+            // 
+            // toolStripButton_Italic
+            // 
+            this.toolStripButton_Italic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Italic.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Italic.Image")));
+            this.toolStripButton_Italic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Italic.Name = "toolStripButton_Italic";
+            this.toolStripButton_Italic.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Italic.Text = "斜体";
+            this.toolStripButton_Italic.Click += new System.EventHandler(this.toolStripButton_Italic_Click);
+            // 
+            // toolStripButton_underline
+            // 
+            this.toolStripButton_underline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_underline.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_underline.Image")));
+            this.toolStripButton_underline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_underline.Name = "toolStripButton_underline";
+            this.toolStripButton_underline.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_underline.Text = "下划线";
+            this.toolStripButton_underline.Click += new System.EventHandler(this.toolStripButton_underline_Click);
             // 
             // toolStripComboBox_style
             // 
@@ -137,6 +161,66 @@
             this.toolStripComboBox_size.Size = new System.Drawing.Size(75, 25);
             this.toolStripComboBox_size.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox_size_SelectedIndexChanged);
             this.toolStripComboBox_size.Click += new System.EventHandler(this.toolStripComboBox_size_Click);
+            // 
+            // toolStripButton_color
+            // 
+            this.toolStripButton_color.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_color.Image = global::DiaryManager.Properties.Resources.TextFillColorPicker;
+            this.toolStripButton_color.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_color.Name = "toolStripButton_color";
+            this.toolStripButton_color.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_color.Text = "更改颜色";
+            this.toolStripButton_color.Click += new System.EventHandler(this.toolStripButton_color_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton_alignLeft
+            // 
+            this.toolStripButton_alignLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_alignLeft.Image = global::DiaryManager.Properties.Resources.AlignLeft;
+            this.toolStripButton_alignLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_alignLeft.Name = "toolStripButton_alignLeft";
+            this.toolStripButton_alignLeft.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_alignLeft.Text = "左对齐";
+            this.toolStripButton_alignLeft.Click += new System.EventHandler(this.toolStripButton_alignLeft_Click);
+            // 
+            // toolStripButton_alignMiddle
+            // 
+            this.toolStripButton_alignMiddle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_alignMiddle.Image = global::DiaryManager.Properties.Resources.AlignCenter;
+            this.toolStripButton_alignMiddle.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_alignMiddle.Name = "toolStripButton_alignMiddle";
+            this.toolStripButton_alignMiddle.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_alignMiddle.Text = "居中";
+            this.toolStripButton_alignMiddle.Click += new System.EventHandler(this.toolStripButton_alignMiddle_Click);
+            // 
+            // toolStripButton_alignRight
+            // 
+            this.toolStripButton_alignRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_alignRight.Image = global::DiaryManager.Properties.Resources.AlignRight;
+            this.toolStripButton_alignRight.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_alignRight.Name = "toolStripButton_alignRight";
+            this.toolStripButton_alignRight.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_alignRight.Text = "右对齐";
+            this.toolStripButton_alignRight.Click += new System.EventHandler(this.toolStripButton_alignRight_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "插入图片";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // menuStrip1
             // 
@@ -228,6 +312,13 @@
             this.撤销ZToolStripMenuItem.Text = "撤销(&Z)";
             this.撤销ZToolStripMenuItem.Click += new System.EventHandler(this.撤销ZToolStripMenuItem_Click);
             // 
+            // 重做ToolStripMenuItem
+            // 
+            this.重做ToolStripMenuItem.Name = "重做ToolStripMenuItem";
+            this.重做ToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.重做ToolStripMenuItem.Text = "重做(&U)";
+            this.重做ToolStripMenuItem.Click += new System.EventHandler(this.重做ToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -268,6 +359,7 @@
             this.关于日记管理器ToolStripMenuItem.Name = "关于日记管理器ToolStripMenuItem";
             this.关于日记管理器ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.关于日记管理器ToolStripMenuItem.Text = "关于 日记管理器(&A)";
+            this.关于日记管理器ToolStripMenuItem.Click += new System.EventHandler(this.关于日记管理器ToolStripMenuItem_Click);
             // 
             // 未登录ToolStripMenuItem
             // 
@@ -277,6 +369,7 @@
             this.toolStripMenuItem2,
             this.获取最新日记ToolStripMenuItem,
             this.上传当前日记ToolStripMenuItem});
+            this.未登录ToolStripMenuItem.Enabled = false;
             this.未登录ToolStripMenuItem.Name = "未登录ToolStripMenuItem";
             this.未登录ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
             this.未登录ToolStripMenuItem.Text = "（未登录）";
@@ -311,23 +404,13 @@
             // 
             // workspace
             // 
-            this.workspace.Location = new System.Drawing.Point(168, 86);
+            this.workspace.Location = new System.Drawing.Point(24, 86);
             this.workspace.Name = "workspace";
-            this.workspace.Size = new System.Drawing.Size(728, 591);
+            this.workspace.Size = new System.Drawing.Size(872, 591);
             this.workspace.TabIndex = 2;
             this.workspace.Text = "";
             this.workspace.FontChanged += new System.EventHandler(this.workspace_FontChanged);
             this.workspace.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(12, 121);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(145, 556);
-            this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // saveFileDialog1
             // 
@@ -357,6 +440,7 @@
             this.date.Size = new System.Drawing.Size(52, 21);
             this.date.TabIndex = 5;
             this.date.Text = "日期";
+            this.date.Click += new System.EventHandler(this.date_Click);
             // 
             // title
             // 
@@ -378,25 +462,6 @@
             this.weather.TabIndex = 5;
             this.weather.Text = "天气";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(12, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 21);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "本地日记列表";
-            // 
-            // loadButton
-            // 
-            this.loadButton.Location = new System.Drawing.Point(45, 91);
-            this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(71, 24);
-            this.loadButton.TabIndex = 7;
-            this.loadButton.Text = "重新加载";
-            this.loadButton.UseVisualStyleBackColor = true;
-            // 
             // buttonCheckManage
             // 
             this.buttonCheckManage.Location = new System.Drawing.Point(901, 141);
@@ -407,120 +472,9 @@
             this.buttonCheckManage.UseVisualStyleBackColor = true;
             this.buttonCheckManage.Click += new System.EventHandler(this.buttonCheckManage_Click);
             // 
-            // 重做ToolStripMenuItem
+            // openJPGDialog
             // 
-            this.重做ToolStripMenuItem.Name = "重做ToolStripMenuItem";
-            this.重做ToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.重做ToolStripMenuItem.Text = "重做(&U)";
-            this.重做ToolStripMenuItem.Click += new System.EventHandler(this.重做ToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton_bold
-            // 
-            this.toolStripButton_bold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_bold.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_bold.Image")));
-            this.toolStripButton_bold.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_bold.Name = "toolStripButton_bold";
-            this.toolStripButton_bold.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_bold.Text = "加粗";
-            this.toolStripButton_bold.Click += new System.EventHandler(this.toolStripButton_bold_Click);
-            // 
-            // toolStripButton_Italic
-            // 
-            this.toolStripButton_Italic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_Italic.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Italic.Image")));
-            this.toolStripButton_Italic.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_Italic.Name = "toolStripButton_Italic";
-            this.toolStripButton_Italic.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_Italic.Text = "斜体";
-            this.toolStripButton_Italic.Click += new System.EventHandler(this.toolStripButton_Italic_Click);
-            // 
-            // toolStripButton_underline
-            // 
-            this.toolStripButton_underline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_underline.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_underline.Image")));
-            this.toolStripButton_underline.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_underline.Name = "toolStripButton_underline";
-            this.toolStripButton_underline.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_underline.Text = "下划线";
-            this.toolStripButton_underline.Click += new System.EventHandler(this.toolStripButton_underline_Click);
-            // 
-            // toolStripButton_sizedown
-            // 
-            this.toolStripButton_sizedown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_sizedown.Image = global::DiaryManager.Properties.Resources.FontSizeDecrease;
-            this.toolStripButton_sizedown.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_sizedown.Name = "toolStripButton_sizedown";
-            this.toolStripButton_sizedown.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_sizedown.Text = "减小字号";
-            this.toolStripButton_sizedown.Click += new System.EventHandler(this.toolStripButton_sizedown_Click);
-            // 
-            // toolStripButton_sizeup
-            // 
-            this.toolStripButton_sizeup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_sizeup.Image = global::DiaryManager.Properties.Resources.FontSizeIncrease;
-            this.toolStripButton_sizeup.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_sizeup.Name = "toolStripButton_sizeup";
-            this.toolStripButton_sizeup.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_sizeup.Text = "加大字号";
-            // 
-            // toolStripButton_color
-            // 
-            this.toolStripButton_color.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_color.Image = global::DiaryManager.Properties.Resources.TextFillColorPicker;
-            this.toolStripButton_color.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_color.Name = "toolStripButton_color";
-            this.toolStripButton_color.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_color.Text = "更改颜色";
-            this.toolStripButton_color.Click += new System.EventHandler(this.toolStripButton_color_Click);
-            // 
-            // toolStripButton_alignLeft
-            // 
-            this.toolStripButton_alignLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_alignLeft.Image = global::DiaryManager.Properties.Resources.AlignLeft;
-            this.toolStripButton_alignLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_alignLeft.Name = "toolStripButton_alignLeft";
-            this.toolStripButton_alignLeft.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_alignLeft.Text = "左对齐";
-            this.toolStripButton_alignLeft.Click += new System.EventHandler(this.toolStripButton_alignLeft_Click);
-            // 
-            // toolStripButton_alignMiddle
-            // 
-            this.toolStripButton_alignMiddle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_alignMiddle.Image = global::DiaryManager.Properties.Resources.AlignCenter;
-            this.toolStripButton_alignMiddle.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_alignMiddle.Name = "toolStripButton_alignMiddle";
-            this.toolStripButton_alignMiddle.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_alignMiddle.Text = "居中";
-            this.toolStripButton_alignMiddle.Click += new System.EventHandler(this.toolStripButton_alignMiddle_Click);
-            // 
-            // toolStripButton_alignRight
-            // 
-            this.toolStripButton_alignRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_alignRight.Image = global::DiaryManager.Properties.Resources.AlignRight;
-            this.toolStripButton_alignRight.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_alignRight.Name = "toolStripButton_alignRight";
-            this.toolStripButton_alignRight.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_alignRight.Text = "右对齐";
-            this.toolStripButton_alignRight.Click += new System.EventHandler(this.toolStripButton_alignRight_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.openJPGDialog.FileName = "openFileDialog2";
             // 
             // frmMain
             // 
@@ -528,13 +482,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 682);
             this.Controls.Add(this.buttonCheckManage);
-            this.Controls.Add(this.loadButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.weather);
             this.Controls.Add(this.title);
             this.Controls.Add(this.date);
             this.Controls.Add(this.addNewMan);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.workspace);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip1);
@@ -566,7 +517,6 @@
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox_size;
         private System.Windows.Forms.ToolStripButton toolStripButton_bold;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton_Italic;
         private System.Windows.Forms.ToolStripButton toolStripButton_underline;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox_style;
@@ -592,13 +542,9 @@
         private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem 退出XToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button buttonCheckManage;
         private System.Windows.Forms.ToolStripMenuItem 关于日记管理器ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 重做ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton_sizedown;
-        private System.Windows.Forms.ToolStripButton toolStripButton_sizeup;
         private System.Windows.Forms.ToolStripButton toolStripButton_color;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ColorDialog colorDialog1;
@@ -607,6 +553,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton_alignRight;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.OpenFileDialog openJPGDialog;
     }
 }
 
